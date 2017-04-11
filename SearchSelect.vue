@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import DataItemList from './DataList.vue';
+import DataItemList from './components/DataList.vue';
 export default {
   props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder'],
   data() {

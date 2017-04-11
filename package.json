@@ -1,6 +1,6 @@
 {
   "name": "pomjs-vue-select",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "license": "ISC",
   "pomjs": {
     "components": {
-      "DataPager": "./Pager.vue",
-      "DataTable": "./Table.vue"
+      "ButtonSelect": "./ButtonSelect.vue",
+      "SearchSelect": "./SearchSelect.vue"
     }
   },
   "bugs": {
