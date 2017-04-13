@@ -3,19 +3,18 @@
        :style="'position:relative;padding-bottom:0px;width:'+(width?width:250)+'px;'">
     <div @click="openSelect"
          class="bootstrap-tagsinput"
-         style="width:100%"
-         id="search-select">
-      <template v-if="!selectItems.length">
-        请选择...
+         style="width:100%">
+      <template v-if="!chosenList.length">
+        <span class="tag label label-default text-muted qc-label">{{label}}</span>
       </template>
-      <template v-if="selectItems.length">
+      <template v-if="chosenList.length">
         <span class="tag label label-default text-muted qc-label"
-              v-for="(item,index) in selectItems">{{item.label}}
-                                                        <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
-                                                  </span>
+              v-for="(item,index) in chosenList">{{item.label}}
+                                                            <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
+                                                      </span>
       </template>
-      <data-item-list v-bind="$props"></data-item-list>
     </div>
+    <data-item-list v-bind="$props"></data-item-list>
   </div>
 </template>
 <script>
