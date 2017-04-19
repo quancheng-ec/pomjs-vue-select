@@ -5,13 +5,13 @@
          class="bootstrap-tagsinput"
          style="width:100%">
       <template v-if="!chosenList.length">
-        <span class="tag label label-default text-muted qc-label">{{label}}</span>
+        <span class="tag label label-default text-muted qc-label">{{ label}}</span>
       </template>
       <template v-if="chosenList.length">
         <span class="tag label label-default text-muted qc-label"
-              v-for="(item,index) in chosenList">{{item.label}}
-                                                              <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
-                                                        </span>
+              v-for="(item,index) in chosenList">{{ short(item.label) }}
+                                                                <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
+                                                          </span>
       </template>
     </div>
     <data-item-list v-bind="$props"></data-item-list>
@@ -28,9 +28,14 @@ export default {
   methods: {
     openSelect(e) {
       this.$children[0].openSelect(e);
-    }, 
+    },
     delSelect(index) {
       this.$children[0].delSelect(index);
+    },
+    short(label) {
+      if (label.length > 6) {
+        return label.substring(0, 3)+'...';
+      }
     }
   },
   components: {

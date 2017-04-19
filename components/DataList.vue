@@ -31,9 +31,9 @@
           <template v-if="it.children&&it.children.length">
             <li class="qc-divider"></li>
             <a href="javascript:void(0)"
-               class="list-group-item"
                v-for="itt in it.children"
                @click="selectItem(itt)"
+               :class="selectKeys[itt.id]?' list-group-item active':' list-group-item'"
                style="padding-left:35px;"> {{itt.label}} </a>
           </template>
   
@@ -60,7 +60,8 @@ export default {
       top: 39,
       searching: false,
       selectItems: [],
-      data: []
+      data: [],
+      selectKeys: {}
     }
   },
   created() {
@@ -74,9 +75,11 @@ export default {
     ),
     selectItems: function () {
       if (this.chosenList) {
+        this.selectKeys = {};
         this.chosenList.splice(0, this.chosenList.length);
         this.selectItems.forEach(it => {
           this.chosenList.push(it);
+          this.selectKeys[it.id] = it;
         });
       }
       if (this.el) {
