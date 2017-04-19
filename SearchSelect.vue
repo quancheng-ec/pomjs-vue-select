@@ -10,8 +10,8 @@
       <template v-if="chosenList.length">
         <span class="tag label label-default text-muted qc-label"
               v-for="(item,index) in chosenList">{{item.label}}
-                                                            <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
-                                                      </span>
+                                                              <a href="javascript:;"class="qc-tag-x" @click.stop="delSelect(index)">x</a>
+                                                        </span>
       </template>
     </div>
     <data-item-list v-bind="$props"></data-item-list>
@@ -28,6 +28,9 @@ export default {
   methods: {
     openSelect(e) {
       this.$children[0].openSelect(e);
+    }, 
+    delSelect(index) {
+      this.$children[0].delSelect(index);
     }
   },
   components: {

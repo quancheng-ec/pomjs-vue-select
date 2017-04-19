@@ -4,7 +4,7 @@
   
     <button type="button"
             @click="openSelect"
-            class="btn  btn-info btn-outline">{{label}}</button>
+            :class="'btn  btn-info btn-outline '+btnClass">{{label}}</button>
   
     <data-item-list v-bind="$props"></data-item-list>
   </div>
@@ -13,7 +13,7 @@
 <script>
 import DataItemList from './components/DataList.vue';
 export default {
-  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder'],
+  props: ['label','btnClass', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder'],
   data() {
     return {
     }

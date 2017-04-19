@@ -86,6 +86,9 @@ export default {
           this.top = this.el.offsetHeight;
         });
       }
+    },
+    url: function () {
+      this.search();
     }
   },
   mounted() {
@@ -144,6 +147,7 @@ export default {
     isElementInViewport: function (el) {
       let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
       var rect = el.getBoundingClientRect();
+      this.top = rect.height;
       if (rect.bottom + 200 > windowHeight) {
         this.top = '-239px';
       }
