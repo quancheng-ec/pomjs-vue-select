@@ -23,10 +23,10 @@
       <div class="list-group qc-searchselect-listgroup ">
   
         <template v-for="it in data">
-          <div v-if="onlyChidren === 'true'" class="list-group-title">
+          <div v-if="onlyLeaf === 'true'" class="list-group-title">
             <strong>{{it.label}} </strong>
           </div>
-          <a v-if="onlyChidren !== 'true'" href="javascript:void(0)"
+          <a v-if="onlyLeaf !== 'true'" href="javascript:void(0)"
              class="list-group-item"
              @click="selectItem(it)">
             <strong>{{it.label}} </strong>
@@ -55,7 +55,7 @@
 import debounce from 'lodash/debounce';
 
 export default {
-  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder', onlyChidren],
+  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder', 'onlyLeaf'],
   data() {
     return {
       open: false,
