@@ -23,10 +23,12 @@
       <div class="list-group qc-searchselect-listgroup ">
   
         <template v-for="it in data">
-          <div v-if="onlyLeaf === 'true'" class="list-group-title">
+          <div v-if="onlyLeaf === 'true'"
+               class="list-group-title">
             <strong>{{it.label}} </strong>
           </div>
-          <a v-if="onlyLeaf !== 'true'" href="javascript:void(0)"
+          <a v-if="onlyLeaf !== 'true'"
+             href="javascript:void(0)"
              class="list-group-item"
              @click="selectItem(it)">
             <strong>{{it.label}} </strong>
@@ -81,8 +83,11 @@ export default {
         this.selectKeys = {};
         this.chosenList.splice(0, this.chosenList.length);
         this.selectItems.forEach(it => {
-          this.chosenList.push(it);
-          this.selectKeys[it.id] = it;
+          if (!this.selectKeys[it.id]) {
+            this.chosenList.push(it);
+            this.selectKeys[it.id] = it;
+          }
+
         });
       }
       if (this.el) {
