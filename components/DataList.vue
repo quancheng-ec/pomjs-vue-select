@@ -91,11 +91,13 @@ export default {
         });
       }
       if (this.el) {
-        const rect = this.el.getBoundingClientRect();
-        this.$nextTick(r => {
-          // 由于dom操作是异步的，所以 用 nextTick 强制同步
-          this.top = this.el.offsetHeight;
-        });
+        // const rect = this.el.getBoundingClientRect();
+        // this.$nextTick(r => {
+        //   // 由于dom操作是异步的，所以 用 nextTick 强制同步
+        //   this.top = this.el.offsetHeight;
+        // });
+
+        this.isElementInViewport(this.el);
       }
     },
     url: function () {
@@ -149,19 +151,25 @@ export default {
     },
     openSelect(e) {
       if (e && e.target) {
-        this.isElementInViewport(e.target);
-        this.el = e.target;
+        this.el = e.currentTarget;
+        this.isElementInViewport(this.el);
+        console.log(this.el, this.el);
         this.open = true;
       }
       //this.search();
     },
     isElementInViewport: function (el) {
-      let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
-      var rect = el.getBoundingClientRect();
-      this.top = rect.height;
-      if (rect.bottom + 200 > windowHeight) {
-        this.top = '-239px';
-      }
+
+      this.$nextTick(r => {
+        let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+        var rect = el.getBoundingClientRect();
+        this.top = rect.height;
+        console.log(rect);
+        if (rect.bottom + 200 > windowHeight) {
+          this.top = '-239px';
+        }
+      });
+
     }
   },
   components: {
