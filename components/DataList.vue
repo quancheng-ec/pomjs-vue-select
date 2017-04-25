@@ -164,7 +164,6 @@ export default {
         let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
         var rect = el.getBoundingClientRect();
         this.top = rect.height;
-        console.log(rect);
         if (rect.bottom + 200 > windowHeight) {
           this.top = '-239px';
         }
