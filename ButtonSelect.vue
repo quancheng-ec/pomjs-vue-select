@@ -13,7 +13,7 @@
 <script>
 import DataItemList from './components/DataList.vue';
 export default {
-  props: ['label','btnClass', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder'],
+  props: ['label','btnClass', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder', 'onlyLeaf'],
   data() {
     return {
     }
