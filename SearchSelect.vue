@@ -20,7 +20,7 @@
 <script>
 import DataItemList from './components/DataList.vue';
 export default {
-  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder'],
+  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder','limit'],
   data() {
     return {
     }
@@ -44,7 +44,8 @@ export default {
       this.$children[0].delSelect(index);
     },
     short(label) {
-      if (label.length > 6) {
+      let limit = this.limit || 6;
+      if (label.length > limit) {
         return label.substring(0, 3) + '...';
       } else {
         return label;
