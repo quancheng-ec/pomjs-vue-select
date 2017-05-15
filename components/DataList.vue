@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="position: absolute;">
     <div class="well qc-well"
          v-if="open"
-         :style="'width :100%;top:'+top+'px'">
+         style="width :100%;">
       <div class="form-group"
            style="width:100%;padding:5px;"
            v-if="url">
