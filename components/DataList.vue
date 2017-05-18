@@ -1,5 +1,9 @@
 <template>
   <div style="position: absolute;">
+    <div v-if="open"
+         @click="open=false;"
+         style="z-index:0;position:fixed;top:0;left:0;width:100%;height:100%"></div>
+         
     <div class="well qc-well"
          v-if="open"
          style="width :100%;">
@@ -45,9 +49,7 @@
         </template>
       </div>
     </div>
-    <div v-if="open"
-         @click="open=false;"
-         style="z-index:9998;position:fixed;top:0;left:0;width:100%;height:100%"></div>
+    
   
   </div>
 </template>
