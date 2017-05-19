@@ -1,11 +1,7 @@
 <template>
   <div style="position: absolute;">
-    <div v-if="open"
-         @click="open=false;"
-         style="z-index:0;position:fixed;top:0;left:0;width:100%;height:100%"></div>
-         
     <div class="well qc-well"
-         v-if="open"
+        v-if="open"   
          style="width :100%;">
       <div class="form-group"
            style="width:100%;padding:5px;"
@@ -49,7 +45,9 @@
         </template>
       </div>
     </div>
-    
+    <div v-if="open"
+         @click="open=false;"
+         style="z-index:9998;position:fixed;top:0;left:0;width:100%;height:100%"></div>
   
   </div>
 </template>
@@ -59,7 +57,7 @@
 import debounce from 'lodash/debounce';
 
 export default {
-  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder', 'onlyLeaf'],
+  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder', 'onlyLeaf', 'appendEl'],
   data() {
     return {
       open: false,
@@ -106,8 +104,22 @@ export default {
       this.search();
     }
   },
+  beforeDestroy(){
+    if (this.appendEl === 'body') {
+      document.body.removeChild(this.$el);
+    }
+  },
   mounted() {
     this.search();
+    if (this.appendEl === 'body') {
+      let top = this.$el.parentNode.getBoundingClientRect().top;
+      let left = this.$el.parentNode.getBoundingClientRect().left;
+      this.$el.parentNode.removeChild(this.$el)
+      document.body.appendChild(this.$el);
+      // this.$el.style.position = 'fixed';
+      this.$el.style.left = left + 'px';
+      this.$el.style.top = top + 40 + 'px';
+    }
   },
   methods: {
     init() {

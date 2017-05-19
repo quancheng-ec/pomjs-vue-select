@@ -20,7 +20,7 @@
 <script>
 import DataItemList from './components/DataList.vue';
 export default {
-  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder','limit'],
+  props: ['label', 'chosenList', 'url', 'isSingle', 'items', 'width', 'placeholder','limit', 'appendEl'],
   data() {
     return {
     }
@@ -51,6 +51,9 @@ export default {
         return label;
       }
     }
+  },
+  mounted(){
+    
   },
   components: {
     DataItemList
